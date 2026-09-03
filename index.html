@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lunar Con 2027 — Year of the Ram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #161B2E;
+    --night-2: #202844;
+    --ember: #B8452F;
+    --ember-light: #D9694D;
+    --gold: #C9A227;
+    --snow: #F7F5F0;
+    --ink: #1F2430;
+    --mist: #6B7280;
+    --line: #E4E0D6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background: var(--snow);
+    line-height: 1.6;
+  }
+  h1, h2, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    margin: 0;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(22,27,46,0.94);
+    backdrop-filter: blur(6px);
+    padding: 14px 0;
+  }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; }
+  nav .brand { color: var(--snow); font-family: 'Fraunces', serif; font-size: 18px; }
+  nav .links { display: flex; gap: 28px; }
+  nav .links a { color: #C7C9D9; text-decoration: none; font-size: 14px; }
+  nav .links a:hover { color: var(--snow); }
+
+  .hero {
+    background: var(--night);
+    color: var(--snow);
+    padding: 90px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero .wrap { position: relative; z-index: 2; text-align: center; padding-bottom: 60px; }
+  .hero .eyebrow { color: var(--ember-light); font-size: 15px; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(36px, 6vw, 58px); line-height: 1.08; margin-bottom: 20px; }
+  .hero p.sub { color: #C7C9D9; font-size: 18px; max-width: 520px; margin: 0 auto 34px; }
+  .hero .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 13px 26px; border-radius: 4px;
+    text-decoration: none; font-size: 15px; font-weight: 500;
+    border: 1px solid transparent; transition: opacity .15s;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn-primary { background: var(--ember); color: var(--snow); }
+  .btn-ghost { border-color: rgba(247,245,240,0.35); color: var(--snow); }
+
+  .skyline { display: block; width: 100%; height: auto; }
+
+  section { padding: 72px 0; }
+  section.alt { background: #F0ECE3; }
+  .section-head { max-width: 560px; margin-bottom: 40px; }
+  .section-head .kicker { color: var(--ember); font-size: 14px; margin-bottom: 8px; }
+  .section-head h2 { font-size: 30px; }
+  .section-head p { color: var(--mist); margin-top: 10px; }
+
+  .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .day-card {
+    background: #fff; border: 1px solid var(--line); border-radius: 6px;
+    padding: 22px;
+  }
+  .day-card .day-label { font-family: 'Fraunces', serif; font-size: 20px; margin-bottom: 6px; }
+  .day-card .day-note { color: var(--mist); font-size: 14px; }
+  .day-card ul { list-style: none; padding: 0; margin: 14px 0 0; }
+  .day-card li { font-size: 14px; padding: 6px 0; border-top: 1px solid var(--line); color: var(--ink); }
+  .day-card li:first-child { border-top: none; }
+  .day-card li.tbd { color: var(--mist); font-style: italic; }
+
+  .game-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .game-chip {
+    background: #fff; border: 1px solid var(--line); border-radius: 999px;
+    padding: 9px 18px; font-size: 14px;
+  }
+  .game-chip .who { color: var(--mist); font-size: 12px; margin-left: 6px; }
+
+  form { max-width: 520px; }
+  .field { margin-bottom: 18px; }
+  label { display: block; font-size: 14px; margin-bottom: 6px; font-weight: 500; }
+  input, select, textarea {
+    width: 100%; padding: 11px 13px; border: 1px solid var(--line);
+    border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 15px;
+    background: #fff; color: var(--ink);
+  }
+  textarea { resize: vertical; min-height: 80px; }
+  fieldset { border: none; padding: 0; margin: 0; }
+  .radio-row { display: flex; gap: 20px; }
+  .radio-row label { display: flex; align-items: center; gap: 6px; font-weight: 400; }
+  .radio-row input { width: auto; }
+  .hidden { position: absolute; left: -9999px; }
+
+  footer {
+    background: var(--night); color: #C7C9D9;
+    padding: 50px 0; font-size: 14px;
+  }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  footer a { color: var(--snow); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Lunar Con 2027</div>
+    <div class="links">
+      <a href="#schedule">Schedule</a>
+      <a href="#games">Games</a>
+      <a href="#suggest">Suggest</a>
+      <a href="#rsvp">RSVP</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Year of the Ram · Chicago</div>
+    <h1>Four years in.<br>The table's set again.</h1>
+    <p class="sub">Dates still settling around Lunar New Year (Feb 6). Location: Rob and Rachele's place, South Loop. Reply to the email thread or use the form below to lock in your seat.</p>
+    <div class="cta-row">
+      <a href="#rsvp" class="btn btn-primary">RSVP</a>
+      <a href="#schedule" class="btn btn-ghost">See the schedule</a>
+    </div>
+  </div>
+  <svg class="skyline" viewBox="0 0 880 120" preserveAspectRatio="none" aria-hidden="true">
+    <rect x="0" y="40" width="60" height="80" fill="#0F1424"/>
+    <rect x="70" y="60" width="40" height="60" fill="#0F1424"/>
+    <rect x="120" y="20" width="55" height="100" fill="#131829"/>
+    <rect x="185" y="50" width="35" height="70" fill="#0F1424"/>
+    <rect x="230" y="0" width="65" height="120" fill="#131829"/>
+    <rect x="305" y="45" width="45" height="75" fill="#0F1424"/>
+    <rect x="360" y="65" width="50" height="55" fill="#0F1424"/>
+    <rect x="420" y="15" width="60" height="105" fill="#131829"/>
+    <rect x="490" y="55" width="40" height="65" fill="#0F1424"/>
+    <rect x="540" y="30" width="70" height="90" fill="#131829"/>
+    <rect x="620" y="60" width="45" height="60" fill="#0F1424"/>
+    <rect x="675" y="10" width="55" height="110" fill="#131829"/>
+    <rect x="740" y="50" width="40" height="70" fill="#0F1424"/>
+    <rect x="790" y="35" width="50" height="85" fill="#131829"/>
+    <rect x="850" y="65" width="30" height="55" fill="#0F1424"/>
+  </svg>
+</header>
+
+<section id="schedule">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Still forming</div>
+      <h2>Tentative schedule</h2>
+      <p>Locks in once dates are confirmed. Fan favorites tend to fight their way back onto the table regardless of what's written here.</p>
+    </div>
+    <div class="schedule-grid">
+      <div class="day-card">
+        <div class="day-label">Day 1</div>
+        <div class="day-note">Arrivals</div>
+        <ul>
+          <li class="tbd">Schedule TBD</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">Day 2</div>
+        <div class="day-note">Full day</div>
+        <ul>
+          <li class="tbd">Early game slot — Wingspan?</li>
+          <li class="tbd">Main event TBD</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">Day 3</div>
+        <div class="day-note">Full day</div>
+        <ul>
+          <li class="tbd">Schedule TBD</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">Final day</div>
+        <div class="day-note">Departures</div>
+        <ul>
+          <li class="tbd">Schedule TBD</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="games" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Bring what you've got</div>
+      <h2>Game library</h2>
+      <p>What's already spoken for. Add yours with the form below.</p>
+    </div>
+    <div class="game-grid">
+      <div class="game-chip">Wingspan <span class="who">breakfast tradition</span></div>
+      <div class="game-chip">ARCS</div>
+      <div class="game-chip">Tapestry</div>
+      <div class="game-chip">Mahjong <span class="who">sitting room</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="suggest">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Have a pick</div>
+      <h2>Suggest a game or activity</h2>
+      <p>Goes straight to the organizers — no reply-all required.</p>
+    </div>
+    <form name="game-suggestions" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="game-suggestions">
+      <p class="hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
+      <div class="field">
+        <label for="s-name">Your name</label>
+        <input id="s-name" name="name" type="text" required>
+      </div>
+      <div class="field">
+        <label for="s-game">Game or activity</label>
+        <input id="s-game" name="suggestion" type="text" required>
+      </div>
+      <div class="field">
+        <label for="s-note">Anything else? (player count, how long it takes, why it's a must)</label>
+        <textarea id="s-note" name="note"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send suggestion</button>
+    </form>
+  </div>
+</section>
+
+<section id="rsvp" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Lock it in</div>
+      <h2>RSVP</h2>
+      <p>Still gauging which block of dates works best — pick your preference below.</p>
+    </div>
+    <form name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="rsvp">
+      <p class="hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
+      <div class="field">
+        <label for="r-name">Your name</label>
+        <input id="r-name" name="name" type="text" required>
+      </div>
+      <div class="field">
+        <label for="r-plus">Anyone joining with you?</label>
+        <input id="r-plus" name="plus_ones" type="text" placeholder="Names, or leave blank">
+      </div>
+      <div class="field">
+        <fieldset>
+          <label>Are you in?</label>
+          <div class="radio-row">
+            <label><input type="radio" name="attending" value="yes" required> Yes</label>
+            <label><input type="radio" name="attending" value="tentative"> Tentative</label>
+            <label><input type="radio" name="attending" value="no"> Can't make it</label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="field">
+        <label for="r-dates">Date block preference</label>
+        <select id="r-dates" name="date_preference">
+          <option value="feb_3_7">Feb 3–7</option>
+          <option value="feb_10_14">Feb 10–14</option>
+          <option value="other">Other / flexible</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="r-diet">Dietary notes</label>
+        <input id="r-diet" name="dietary" type="text" placeholder="Optional">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit RSVP</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="display" style="color:#F7F5F0; font-size:18px;">Lunar Con 2027</div>
+      <p style="margin-top:8px;">South Loop, Chicago</p>
+    </div>
+    <div>
+      <p>Questions? <a href="mailto:robinson.michael04@gmail.com">Email Mike</a><br>
+      or CC <a href="mailto:jphanschmann@gmail.com">Jeff</a> on the thread.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
