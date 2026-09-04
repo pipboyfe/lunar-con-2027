@@ -111,6 +111,13 @@
   .radio-row input { width: auto; }
   .hidden { position: absolute; left: -9999px; }
 
+  .form-success {
+    background: #fff; border: 1px solid var(--line); border-radius: 6px;
+    padding: 26px 28px; max-width: 520px;
+  }
+  .form-success .display { color: var(--ember); font-size: 22px; margin-bottom: 8px; }
+  .form-success p { color: var(--mist); margin: 0; }
+
   footer {
     background: var(--night); color: #C7C9D9;
     padding: 50px 0; font-size: 14px;
@@ -226,7 +233,7 @@
       <h2>Suggest a game or activity</h2>
       <p>Goes straight to the organizers — no reply-all required.</p>
     </div>
-    <form name="game-suggestions" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <form name="game-suggestions" id="suggest-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="game-suggestions">
       <p class="hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
       <div class="field">
@@ -243,6 +250,10 @@
       </div>
       <button type="submit" class="btn btn-primary">Send suggestion</button>
     </form>
+    <div id="suggest-success" class="form-success" hidden>
+      <p class="display">Suggestion sent.</p>
+      <p>Thanks — it's on the list for consideration.</p>
+    </div>
   </div>
 </section>
 
@@ -253,7 +264,7 @@
       <h2>RSVP</h2>
       <p>Still gauging which block of dates works best — pick your preference below.</p>
     </div>
-    <form name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <form name="rsvp" id="rsvp-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="rsvp">
       <p class="hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
       <div class="field">
@@ -288,6 +299,10 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit RSVP</button>
     </form>
+    <div id="rsvp-success" class="form-success" hidden>
+      <p class="display">Your seat has been reserved.</p>
+      <p>We'll follow up with final dates once they're locked. Reply to the email thread if anything changes.</p>
+    </div>
   </div>
 </section>
 
@@ -303,6 +318,34 @@
     </div>
   </div>
 </footer>
+
+<script>
+  function handleNetlifyForm(formId, successId) {
+    var form = document.getElementById(formId);
+    var success = document.getElementById(successId);
+    if (!form || !success) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var body = new URLSearchParams(new FormData(form)).toString();
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Form submission failed');
+          form.hidden = true;
+          success.hidden = false;
+        })
+        .catch(function () {
+          alert("Something went wrong sending that — please try again, or email robinson.michael04@gmail.com directly.");
+        });
+    });
+  }
+
+  handleNetlifyForm('rsvp-form', 'rsvp-success');
+  handleNetlifyForm('suggest-form', 'suggest-success');
+</script>
 
 </body>
 </html>
