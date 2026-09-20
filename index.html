@@ -90,6 +90,14 @@
   .day-card li { font-size: 14px; padding: 6px 0; border-top: 1px solid var(--line); color: var(--ink); }
   .day-card li:first-child { border-top: none; }
   .day-card li.tbd { color: var(--mist); font-style: italic; }
+  .day-card.early-bird { background: #FBF6E7; border-color: var(--gold); }
+  .day-badge {
+    display: inline-block; background: var(--gold); color: var(--night);
+    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    padding: 3px 9px; border-radius: 999px; margin-left: 8px;
+    vertical-align: middle;
+  }
 
   .meeple-row { display: flex; gap: 10px; margin-top: 14px; }
   .game-grid { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -162,9 +170,9 @@
 <header class="hero">
   <div class="wrap">
     <img class="ram-icon" src="zodiac_ram_small.png" width="110" height="110" alt="Year of the Ram">
-    <div class="eyebrow">Year of the Ram · Chicago</div>
+    <div class="eyebrow">Year of the Ram · Chicago · Feb 11–14</div>
     <h1>Four years in.<br>The table's set again.</h1>
-    <p class="sub">Dates still settling around Lunar New Year (Feb 6). Location: Rob's place, South Loop. Reply to the email thread or use the form below to lock in your seat.</p>
+    <p class="sub">Thursday Feb 11 through Sunday Feb 14, around Lunar New Year (Feb 6) — plus an optional early-bird session Wednesday the 10th. Location: Rob's place, South Loop. Reply to the email thread or use the form below to lock in your seat.</p>
     <div class="cta-row">
       <a href="#rsvp" class="btn btn-primary">RSVP</a>
       <a href="#schedule" class="btn btn-ghost">See the schedule</a>
@@ -176,21 +184,28 @@
 <section id="schedule">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">Still forming</div>
-      <h2>Tentative schedule</h2>
-      <p>Locks in once dates are confirmed. Fan favorites tend to fight their way back onto the table regardless of what's written here.</p>
+      <div class="kicker">Dates locked</div>
+      <h2>Schedule</h2>
+      <p>Feb 11–14 is official. Activities below are still filling in — fan favorites tend to fight their way back onto the table regardless of what's written here.</p>
     </div>
     <div class="schedule-grid">
+      <div class="day-card early-bird">
+        <div class="day-label">Early Bird <span class="day-badge">Exclusive · optional</span></div>
+        <div class="day-note">Wed, Feb 10</div>
+        <ul>
+          <li class="tbd">Late afternoon/evening — a game or two</li>
+        </ul>
+      </div>
       <div class="day-card">
         <div class="day-label">Day 1</div>
-        <div class="day-note">Arrivals</div>
+        <div class="day-note">Thu, Feb 11 · Arrivals</div>
         <ul>
           <li class="tbd">Schedule TBD</li>
         </ul>
       </div>
       <div class="day-card">
         <div class="day-label">Day 2</div>
-        <div class="day-note">Full day</div>
+        <div class="day-note">Fri, Feb 12 · Full day</div>
         <ul>
           <li class="tbd">Early game slot</li>
           <li class="tbd">Main event TBD</li>
@@ -198,15 +213,7 @@
       </div>
       <div class="day-card">
         <div class="day-label">Day 3</div>
-        <div class="day-note">Full day</div>
-        <ul>
-          <li class="tbd">Early game slot</li>
-          <li class="tbd">Schedule TBD</li>
-        </ul>
-      </div>
-      <div class="day-card">
-        <div class="day-label">Day 4</div>
-        <div class="day-note">Full day</div>
+        <div class="day-note">Sat, Feb 13 · Full day</div>
         <ul>
           <li class="tbd">Early game slot</li>
           <li class="tbd">Schedule TBD</li>
@@ -214,7 +221,7 @@
       </div>
       <div class="day-card">
         <div class="day-label">Final Day</div>
-        <div class="day-note">Departures</div>
+        <div class="day-note">Sun, Feb 14 · Late night OK — Mon's a holiday</div>
         <ul>
           <li class="tbd">Schedule TBD</li>
         </ul>
@@ -283,7 +290,7 @@
     <div class="section-head">
       <div class="kicker">Lock it in</div>
       <h2>RSVP</h2>
-      <p>Still gauging which block of dates works best — pick your preference below.</p>
+      <p>Feb 11–14 is official — let us know you're in.</p>
     </div>
     <form name="rsvp" id="rsvp-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="rsvp">
@@ -307,14 +314,6 @@
         </fieldset>
       </div>
       <div class="field">
-        <label for="r-dates">Date block preference</label>
-        <select id="r-dates" name="date_preference">
-          <option value="feb_3_7">Feb 3–7</option>
-          <option value="feb_10_14">Feb 10–14</option>
-          <option value="other">Other / flexible</option>
-        </select>
-      </div>
-      <div class="field">
         <label for="r-notes">Notes or requests</label>
         <input id="r-notes" name="notes" type="text" placeholder="Optional">
       </div>
@@ -322,7 +321,7 @@
     </form>
     <div id="rsvp-success" class="form-success" hidden>
       <p class="display">Your seat has been reserved.</p>
-      <p>We'll follow up with final dates once they're locked. Reply to the email thread if anything changes.</p>
+      <p>See you Feb 11–14 (plus Wednesday the 10th if you're in for the early bird session). Reply to the email thread if anything changes.</p>
     </div>
   </div>
 </section>
