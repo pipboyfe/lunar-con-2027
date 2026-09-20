@@ -135,18 +135,6 @@
   .form-success .display { color: var(--ember); font-size: 22px; margin-bottom: 8px; }
   .form-success p { color: var(--mist); margin: 0; }
 
-  .log-tabs { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
-  .log-tab-btn {
-    background: #fff; border: 1px solid var(--line); border-radius: 999px;
-    padding: 8px 20px; font-size: 14px; font-family: 'Inter', sans-serif;
-    color: var(--ink); cursor: pointer;
-  }
-  .log-tab-btn.active { background: var(--night); border-color: var(--night); color: var(--snow); }
-  .log-placeholder {
-    border: 1px dashed var(--line); border-radius: 6px;
-    padding: 40px 24px; text-align: center; color: var(--mist); font-size: 14px;
-  }
-
   footer {
     background: var(--night); color: #C7C9D9;
     padding: 50px 0; font-size: 14px;
@@ -165,7 +153,6 @@
       <a href="#games">Games</a>
       <a href="#suggest">Suggest</a>
       <a href="#rsvp">RSVP</a>
-      <a href="#campaign-log">Campaign Log</a>
     </div>
   </div>
 </nav>
@@ -349,30 +336,6 @@
   </div>
 </section>
 
-<section id="campaign-log">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">What has gone before</div>
-      <h2>Campaign Log</h2>
-      <p>Photos and stories from cons past. Wall rules: keep it kind, credit your fellow players, and if a picture's more embarrassing than the game night actually was, maybe check with them first.</p>
-    </div>
-    <div class="log-tabs" role="tablist">
-      <button class="log-tab-btn active" type="button" data-year="lc26">LC26</button>
-      <button class="log-tab-btn" type="button" data-year="lc25">LC25</button>
-      <button class="log-tab-btn" type="button" data-year="lc24">LC24</button>
-    </div>
-    <div class="log-panel" data-year="lc26">
-      <div class="log-placeholder">Photos and stories from LC26 — coming soon.</div>
-    </div>
-    <div class="log-panel" data-year="lc25" hidden>
-      <div class="log-placeholder">Photos and stories from LC25 — coming soon.</div>
-    </div>
-    <div class="log-panel" data-year="lc24" hidden>
-      <div class="log-placeholder">Photos and stories from LC24 — coming soon.</div>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="wrap">
     <div>
@@ -411,18 +374,6 @@
 
   handleNetlifyForm('rsvp-form', 'rsvp-success');
   handleNetlifyForm('suggest-form', 'suggest-success');
-
-  document.querySelectorAll('.log-tab-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var year = btn.dataset.year;
-      document.querySelectorAll('.log-tab-btn').forEach(function (b) {
-        b.classList.toggle('active', b === btn);
-      });
-      document.querySelectorAll('.log-panel').forEach(function (panel) {
-        panel.hidden = panel.dataset.year !== year;
-      });
-    });
-  });
 
   var WEATHER_CODES = {
     0: 'Clear', 1: 'Mostly clear', 2: 'Partly cloudy', 3: 'Overcast',
