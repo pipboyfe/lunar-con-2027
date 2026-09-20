@@ -103,12 +103,15 @@
   .game-grid { display: flex; flex-wrap: wrap; gap: 10px; }
   .game-chip {
     display: inline-block;
-    background: #fff; border: 1px solid var(--line); border-radius: 999px;
+    background: #fff; border: 1.5px solid var(--ember-light); border-radius: 999px;
     padding: 9px 18px; font-size: 14px;
-    text-decoration: none; transition: border-color .15s;
+    text-decoration: none; transition: border-color .15s, background .15s;
   }
-  .game-chip:hover { border-color: var(--ember); }
+  .game-chip::after { content: ' ↗'; font-size: 11px; color: var(--mist); }
+  .game-chip:hover { border-color: var(--ember); background: #FFF6F3; }
+  .game-chip:hover::after { color: var(--ember); }
   .game-chip .who { color: var(--mist); font-size: 12px; margin-left: 6px; }
+  .game-note { color: var(--mist); font-size: 12px; margin-top: 14px; }
 
   form { max-width: 520px; }
   .field { margin-bottom: 18px; }
@@ -120,7 +123,7 @@
   }
   textarea { resize: vertical; min-height: 80px; }
   fieldset { border: none; padding: 0; margin: 0; }
-  .radio-row { display: flex; gap: 20px; }
+  .radio-row { display: flex; gap: 14px 20px; flex-wrap: wrap; }
   .radio-row label { display: flex; align-items: center; gap: 6px; font-weight: 400; }
   .radio-row input { width: auto; }
   .hidden { position: absolute; left: -9999px; }
@@ -235,7 +238,7 @@
     <div class="section-head">
       <div class="kicker">Bring what you've got</div>
       <h2>Game library</h2>
-      <p>What's already spoken for. Add yours with the form below.</p>
+      <p>What's already spoken for. Add yours with the form below. Click a game for more info.*</p>
       <div class="meeple-row" aria-hidden="true">
         <svg viewBox="0 0 100 100" width="26" height="26"><circle cx="50" cy="20" r="14" fill="var(--ember)"/><path d="M30,35 L70,35 L80,80 L65,80 L65,60 L58,60 L58,95 L42,95 L42,60 L35,60 L35,80 L20,80 Z" fill="var(--ember)"/></svg>
         <svg viewBox="0 0 100 100" width="26" height="26"><circle cx="50" cy="20" r="14" fill="var(--gold)"/><path d="M30,35 L70,35 L80,80 L65,80 L65,60 L58,60 L58,95 L42,95 L42,60 L35,60 L35,80 L20,80 Z" fill="var(--gold)"/></svg>
@@ -251,6 +254,7 @@
       <a class="game-chip" href="https://boardgamegeek.com/boardgame/371330/luthier" target="_blank" rel="noopener">Luthier</a>
       <a class="game-chip" href="https://boardgamegeek.com/boardgame/332686/john-company-second-edition" target="_blank" rel="noopener">John Company</a>
     </div>
+    <p class="game-note">* Links open the game's page on BoardGameGeek in a new tab.</p>
   </div>
 </section>
 
@@ -308,6 +312,7 @@
           <label>Are you in?</label>
           <div class="radio-row">
             <label><input type="radio" name="attending" value="yes" required> Yes</label>
+            <label><input type="radio" name="attending" value="early_bird"> Exclusive Early Bird</label>
             <label><input type="radio" name="attending" value="tentative"> Tentative</label>
             <label><input type="radio" name="attending" value="no"> Can't make it</label>
           </div>
