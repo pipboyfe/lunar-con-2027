@@ -79,6 +79,17 @@
   .section-head h2 { font-size: 30px; }
   .section-head p { color: var(--mist); margin-top: 10px; }
 
+  .hotel-card {
+    background: #fff; border: 1px solid var(--line); border-radius: 6px;
+    padding: 28px; max-width: 560px;
+  }
+  .hotel-name { font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 4px; }
+  .hotel-meta { color: var(--mist); font-size: 14px; margin-bottom: 18px; }
+  .hotel-details { list-style: none; padding: 0; margin: 0 0 24px; }
+  .hotel-details li { font-size: 14px; padding: 8px 0; border-top: 1px solid var(--line); }
+  .hotel-details li:first-child { border-top: none; }
+  .hotel-details .deadline { color: var(--ember); font-weight: 600; }
+
   .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
   .day-card {
     background: #fff; border: 1px solid var(--line); border-radius: 6px;
@@ -153,6 +164,7 @@
   <div class="wrap">
     <div class="brand">Lunar Con 2027</div>
     <div class="links">
+      <a href="#stay">Stay</a>
       <a href="#schedule">Schedule</a>
       <a href="#games">Games</a>
       <a href="#suggest">Suggest</a>
@@ -174,6 +186,26 @@
     <div id="weather-chip" class="weather-chip">Chicago right now: loading…</div>
   </div>
 </header>
+
+<section id="stay">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Where to stay</div>
+      <h2>Host Hotel</h2>
+      <p>A room block is reserved for LC27 if you'd rather not crash on the floor.</p>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-name">SpringHill Suites Chicago Chinatown</div>
+      <div class="hotel-meta">2.5 miles from Rob's place</div>
+      <ul class="hotel-details">
+        <li><strong>Rate:</strong> $160/night - good for any number of nights within the block</li>
+        <li><strong>Block dates:</strong> Wed, Feb 10 - Sun, Feb 14</li>
+        <li><strong>Book by:</strong> <span class="deadline">Jan 10, 2027</span> - rooms released after this date</li>
+      </ul>
+      <a href="https://app.marriott.com/resview2?id=1790197024424&key=GRP&app=resvlink" class="btn btn-primary" target="_blank" rel="noopener">Book Your Group Rate for LC27</a>
+    </div>
+  </div>
+</section>
 
 <section id="schedule">
   <div class="wrap">
