@@ -79,6 +79,27 @@
   .section-head h2 { font-size: 30px; }
   .section-head p { color: var(--mist); margin-top: 10px; }
 
+  .news-post {
+    background: #fff; border: 1px solid var(--line); border-radius: 6px;
+    padding: 32px; max-width: 680px;
+  }
+  .news-date {
+    color: var(--mist); font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.04em; margin-bottom: 16px;
+  }
+  .news-post h3 { font-family: 'Fraunces', serif; font-size: 20px; margin: 30px 0 10px; }
+  .news-post h3:first-of-type { margin-top: 0; }
+  .news-post p { margin: 0; color: var(--ink); }
+  .rsvp-lists { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 16px; }
+  .rsvp-list { flex: 1; min-width: 180px; }
+  .rsvp-list-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--ember); font-weight: 600; margin-bottom: 8px;
+  }
+  .rsvp-list ul { list-style: none; padding: 0; margin: 0; }
+  .rsvp-list li { font-size: 14px; padding: 6px 0; border-top: 1px solid var(--line); }
+  .rsvp-list li:first-child { border-top: none; }
+
   .hotel-card {
     background: #fff; border: 1px solid var(--line); border-radius: 6px;
     padding: 28px; max-width: 560px;
@@ -164,6 +185,7 @@
   <div class="wrap">
     <div class="brand">Lunar Con 2027</div>
     <div class="links">
+      <a href="#news">News</a>
       <a href="#stay">Stay</a>
       <a href="#schedule">Schedule</a>
       <a href="#games">Games</a>
@@ -186,6 +208,56 @@
     <div id="weather-chip" class="weather-chip">Chicago right now: loading…</div>
   </div>
 </header>
+
+<section id="news">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Fresh off the table</div>
+      <h2>Current News!</h2>
+      <p>Updates land here instead of your inbox. Check back whenever.</p>
+    </div>
+    <div class="news-feed">
+      <article class="news-post">
+        <div class="news-date">Oct 25, 2026</div>
+
+        <h3>The list is in!</h3>
+        <p>Here's where things stand for who's pulling up a chair this year. If you're still on the fence, no pressure - but the sooner we've got a real number, the easier it is to plan table space (and figure out how many copies of things like Brass we actually need). Family's always welcome to show up whenever the spirit moves you - this is just so nobody's standing around waiting for a seat.</p>
+        <div class="rsvp-lists">
+          <div class="rsvp-list">
+            <div class="rsvp-list-label">Confirmed</div>
+            <ul>
+              <li>Jennifer White</li>
+              <li>Jonathan Cojuangco + Family</li>
+              <li>Camille Roubik +1</li>
+              <li>Jason Robinson</li>
+              <li>Caitlin Hanschmann</li>
+              <li>Jeff Hanschmann</li>
+              <li>Donnie Dupaya + Family</li>
+              <li>Donovan Dikitanan +1</li>
+              <li>Nicole Cojuangco</li>
+              <li>Rachele Robinson</li>
+              <li>Robert "Bob" Cruz</li>
+            </ul>
+          </div>
+          <div class="rsvp-list">
+            <div class="rsvp-list-label">Tentative</div>
+            <ul>
+              <li>Ai-Ai Cojuangco</li>
+              <li>DJ Dikitanan + Family</li>
+              <li>Sam Mezzina</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Bringing the Gang</h3>
+        <p>Lunar Con's growing a little this year. Got a friend or two who'd fit right in for a weekend of games and chaos? Bring them along. Don't have anyone in mind? No worries - let us know and we'll see if another family wants the extra spot.</p>
+
+        <h3>Chip In (Totally Optional - For Now)</h3>
+        <p>Keeping a house full of us fed, caffeinated, and moving for four days isn't free. If you're able, we're asking for a voluntary contribution of $20-40 toward a shared pool covering groceries/supplies, meals, and a rideshare voucher fund - so nobody's stressing about rides to and from the venue.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
 <section id="stay">
   <div class="wrap">
