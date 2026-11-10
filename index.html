@@ -1,520 +1,925 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lunar Con 2027 - Year of the Ram</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --night: #161B2E;
-    --night-2: #202844;
-    --ember: #B8452F;
-    --ember-light: #D9694D;
-    --gold: #C9A227;
-    --snow: #F7F5F0;
-    --ink: #1F2430;
-    --mist: #6B7280;
-    --line: #E4E0D6;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    color: var(--ink);
-    background: var(--snow);
-    line-height: 1.6;
-  }
-  h1, h2, .display {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    margin: 0;
-  }
-  a { color: inherit; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunar Con 2027 - Year of the Ram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --night: #161B2E;
+      --night-2: #202844;
+      --ember: #B8452F;
+      --ember-light: #D9694D;
+      --gold: #C9A227;
+      --snow: #F7F5F0;
+      --ink: #1F2430;
+      --mist: #6B7280;
+      --line: #E4E0D6;
+    }
 
-  nav {
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(22,27,46,0.94);
-    backdrop-filter: blur(6px);
-    padding: 14px 0;
-  }
-  nav .wrap { display: flex; justify-content: space-between; align-items: center; }
-  nav .brand { color: var(--snow); font-family: 'Fraunces', serif; font-size: 18px; }
-  nav .links { display: flex; gap: 28px; }
-  nav .links a { color: #C7C9D9; text-decoration: none; font-size: 14px; }
-  nav .links a:hover { color: var(--snow); }
+    * {
+      box-sizing: border-box;
+    }
 
-  .hero {
-    background:
-      linear-gradient(180deg, rgba(22,27,46,0.90) 0%, rgba(22,27,46,0.78) 45%, rgba(22,27,46,0.96) 100%),
-      url('chicago_skyline.jpg') center bottom / cover no-repeat;
-    color: var(--snow);
-    padding: 90px 0 70px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero .wrap { position: relative; z-index: 2; text-align: center; }
-  .ram-icon { display: block; margin: 0 auto 14px; }
-  .hero .eyebrow { color: var(--ember-light); font-size: 22px; margin-bottom: 18px; }
-  .hero h1 { font-size: clamp(36px, 6vw, 58px); line-height: 1.08; margin-bottom: 20px; }
-  .hero p.sub { color: #C7C9D9; font-size: 18px; max-width: 520px; margin: 0 auto 34px; }
-  .hero .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  .weather-chip { margin-top: 22px; font-size: 13px; color: #C7C9D9; }
-  .btn {
-    display: inline-block; padding: 13px 26px; border-radius: 4px;
-    text-decoration: none; font-size: 15px; font-weight: 500;
-    border: 1px solid transparent; transition: opacity .15s;
-  }
-  .btn:hover { opacity: 0.85; }
-  .btn-primary { background: var(--ember); color: var(--snow); }
-  .btn-ghost { border-color: rgba(247,245,240,0.35); color: var(--snow); }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background: var(--snow);
+      line-height: 1.6;
+    }
 
-  section { padding: 72px 0; }
-  section.alt { background: #F0ECE3; }
-  .section-head { max-width: 560px; margin-bottom: 40px; }
-  .section-head .kicker { color: var(--ember); font-size: 14px; margin-bottom: 8px; }
-  .section-head h2 { font-size: 30px; }
-  .section-head p { color: var(--mist); margin-top: 10px; }
+    h1,
+    h2,
+    .display {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      margin: 0;
+    }
 
-  .news-post {
-    background: #fff; border: 1px solid var(--line); border-radius: 6px;
-    padding: 32px; max-width: 680px;
-  }
-  .news-date {
-    color: var(--mist); font-size: 12px; text-transform: uppercase;
-    letter-spacing: 0.04em; margin-bottom: 16px;
-  }
-  .news-post h3 { font-family: 'Fraunces', serif; font-size: 20px; margin: 30px 0 10px; }
-  .news-post h3:first-of-type { margin-top: 0; }
-  .news-post p { margin: 0; color: var(--ink); }
-  .rsvp-lists { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 16px; }
-  .rsvp-list { flex: 1; min-width: 180px; }
-  .rsvp-list-label {
-    font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em;
-    color: var(--ember); font-weight: 600; margin-bottom: 8px;
-  }
-  .rsvp-list ul { list-style: none; padding: 0; margin: 0; }
-  .rsvp-list li { font-size: 14px; padding: 6px 0; border-top: 1px solid var(--line); }
-  .rsvp-list li:first-child { border-top: none; }
+    a {
+      color: inherit;
+    }
 
-  .hotel-card {
-    background: #fff; border: 1px solid var(--line); border-radius: 6px;
-    padding: 28px; max-width: 560px;
-  }
-  .hotel-name { font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 4px; }
-  .hotel-meta { color: var(--mist); font-size: 14px; margin-bottom: 18px; }
-  .hotel-details { list-style: none; padding: 0; margin: 0 0 24px; }
-  .hotel-details li { font-size: 14px; padding: 8px 0; border-top: 1px solid var(--line); }
-  .hotel-details li:first-child { border-top: none; }
-  .hotel-details .deadline { color: var(--ember); font-weight: 600; }
+    .wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-  .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
-  .day-card {
-    background: #fff; border: 1px solid var(--line); border-radius: 6px;
-    padding: 22px;
-  }
-  .day-card .day-label { font-family: 'Fraunces', serif; font-size: 20px; margin-bottom: 6px; }
-  .day-card .day-note { color: var(--mist); font-size: 14px; }
-  .day-card ul { list-style: none; padding: 0; margin: 14px 0 0; }
-  .day-card li { font-size: 14px; padding: 6px 0; border-top: 1px solid var(--line); color: var(--ink); }
-  .day-card li:first-child { border-top: none; }
-  .day-card li.tbd { color: var(--mist); font-style: italic; }
-  .day-subhead {
-    font-size: 11px; color: var(--ember); font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3px;
-  }
-  .day-card.early-bird { background: #FBF6E7; border-color: var(--gold); }
-  .day-badge {
-    display: inline-block; background: var(--gold); color: var(--night);
-    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.04em;
-    padding: 3px 9px; border-radius: 999px; margin-left: 8px;
-    vertical-align: middle;
-  }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(22, 27, 46, 0.94);
+      backdrop-filter: blur(6px);
+      padding: 14px 0;
+    }
 
-  .meeple-row { display: flex; gap: 10px; margin-top: 14px; }
-  .game-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-  .game-chip {
-    display: inline-block;
-    background: #fff; border: 1.5px solid var(--ember-light); border-radius: 999px;
-    padding: 9px 18px; font-size: 14px;
-    text-decoration: none; transition: border-color .15s, background .15s;
-  }
-  .game-chip::after { content: ' ↗'; font-size: 11px; color: var(--mist); }
-  .game-chip:hover { border-color: var(--ember); background: #FFF6F3; }
-  .game-chip:hover::after { color: var(--ember); }
-  .game-chip .who { color: var(--mist); font-size: 12px; margin-left: 6px; }
-  .game-note { color: var(--mist); font-size: 12px; margin-top: 14px; }
+    nav .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-  form { max-width: 520px; }
-  .field { margin-bottom: 18px; }
-  label { display: block; font-size: 14px; margin-bottom: 6px; font-weight: 500; }
-  input, select, textarea {
-    width: 100%; padding: 11px 13px; border: 1px solid var(--line);
-    border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 15px;
-    background: #fff; color: var(--ink);
-  }
-  textarea { resize: vertical; min-height: 80px; }
-  fieldset { border: none; padding: 0; margin: 0; }
-  .radio-row { display: flex; gap: 14px 20px; flex-wrap: wrap; }
-  .radio-row label { display: flex; align-items: center; gap: 6px; font-weight: 400; }
-  .radio-row input { width: auto; }
-  .hidden { position: absolute; left: -9999px; }
+    nav .brand {
+      color: var(--snow);
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+    }
 
-  .form-success {
-    background: #fff; border: 1px solid var(--line); border-radius: 6px;
-    padding: 26px 28px; max-width: 520px;
-  }
-  .form-success .display { color: var(--ember); font-size: 22px; margin-bottom: 8px; }
-  .form-success p { color: var(--mist); margin: 0; }
+    nav .links {
+      display: flex;
+      gap: 28px;
+    }
 
-  footer {
-    background: var(--night); color: #C7C9D9;
-    padding: 50px 0; font-size: 14px;
-  }
-  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-  footer a { color: var(--snow); text-decoration: underline; }
-</style>
+    nav .links a {
+      color: #C7C9D9;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav .links a:hover {
+      color: var(--snow);
+    }
+
+    .hero {
+      background:
+        linear-gradient(180deg, rgba(22, 27, 46, 0.90) 0%, rgba(22, 27, 46, 0.78) 45%, rgba(22, 27, 46, 0.96) 100%),
+        url('chicago_skyline.jpg') center bottom / cover no-repeat;
+      color: var(--snow);
+      padding: 90px 0 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero .wrap {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .ram-icon {
+      display: block;
+      margin: 0 auto 14px;
+    }
+
+    .hero .eyebrow {
+      color: var(--ember-light);
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .hero p.sub {
+      color: #C7C9D9;
+      font-size: 18px;
+      max-width: 520px;
+      margin: 0 auto 34px;
+    }
+
+    .hero .cta-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .weather-chip {
+      margin-top: 22px;
+      font-size: 13px;
+      color: #C7C9D9;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 26px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      transition: opacity .15s;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    .btn-primary {
+      background: var(--ember);
+      color: var(--snow);
+    }
+
+    .btn-ghost {
+      border-color: rgba(247, 245, 240, 0.35);
+      color: var(--snow);
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    section.alt {
+      background: #F0ECE3;
+    }
+
+    .section-head {
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+
+    .section-head .kicker {
+      color: var(--ember);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .section-head h2 {
+      font-size: 30px;
+    }
+
+    .section-head p {
+      color: var(--mist);
+      margin-top: 10px;
+    }
+
+    .news-post {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 32px;
+      max-width: 680px;
+    }
+
+    .news-date {
+      color: var(--mist);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    .news-post h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      margin: 30px 0 10px;
+    }
+
+    .news-post h3:first-of-type {
+      margin-top: 0;
+    }
+
+    .news-post p {
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .rsvp-lists {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .rsvp-list {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .rsvp-list-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ember);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .rsvp-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .rsvp-list li {
+      font-size: 14px;
+      padding: 6px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .rsvp-list li:first-child {
+      border-top: none;
+    }
+
+    .hotel-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 28px;
+      max-width: 560px;
+    }
+
+    .hotel-name {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .hotel-meta {
+      color: var(--mist);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hotel-details {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+    }
+
+    .hotel-details li {
+      font-size: 14px;
+      padding: 8px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .hotel-details li:first-child {
+      border-top: none;
+    }
+
+    .hotel-details .deadline {
+      color: var(--ember);
+      font-weight: 600;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .day-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 22px;
+    }
+
+    .day-card .day-label {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .day-card .day-note {
+      color: var(--mist);
+      font-size: 14px;
+    }
+
+    .day-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+    }
+
+    .day-card li {
+      font-size: 14px;
+      padding: 6px 0;
+      border-top: 1px solid var(--line);
+      color: var(--ink);
+    }
+
+    .day-card li:first-child {
+      border-top: none;
+    }
+
+    .day-card li.tbd {
+      color: var(--mist);
+      font-style: italic;
+    }
+
+    .day-subhead {
+      font-size: 11px;
+      color: var(--ember);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 3px;
+    }
+
+    .day-card.early-bird {
+      background: #FBF6E7;
+      border-color: var(--gold);
+    }
+
+    .day-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--night);
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 3px 9px;
+      border-radius: 999px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .meeple-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .game-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .game-chip {
+      display: inline-block;
+      background: #fff;
+      border: 1.5px solid var(--ember-light);
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: border-color .15s, background .15s;
+    }
+
+    .game-chip::after {
+      content: ' ↗';
+      font-size: 11px;
+      color: var(--mist);
+    }
+
+    .game-chip:hover {
+      border-color: var(--ember);
+      background: #FFF6F3;
+    }
+
+    .game-chip:hover::after {
+      color: var(--ember);
+    }
+
+    .game-chip .who {
+      color: var(--mist);
+      font-size: 12px;
+      margin-left: 6px;
+    }
+
+    .game-note {
+      color: var(--mist);
+      font-size: 12px;
+      margin-top: 14px;
+    }
+
+    form {
+      max-width: 520px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .radio-row {
+      display: flex;
+      gap: 14px 20px;
+      flex-wrap: wrap;
+    }
+
+    .radio-row label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 400;
+    }
+
+    .radio-row input {
+      width: auto;
+    }
+
+    .hidden {
+      position: absolute;
+      left: -9999px;
+    }
+
+    .form-success {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 26px 28px;
+      max-width: 520px;
+    }
+
+    .form-success .display {
+      color: var(--ember);
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .form-success p {
+      color: var(--mist);
+      margin: 0;
+    }
+
+    footer {
+      background: var(--night);
+      color: #C7C9D9;
+      padding: 50px 0;
+      font-size: 14px;
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    footer a {
+      color: var(--snow);
+      text-decoration: underline;
+    }
+  </style>
 </head>
+
 <body>
 
-<nav>
-  <div class="wrap">
-    <div class="brand">Lunar Con 2027</div>
-    <div class="links">
-      <a href="#news">News</a>
-      <a href="#stay">Stay</a>
-      <a href="#schedule">Schedule</a>
-      <a href="#games">Games</a>
-      <a href="#suggest">Suggest</a>
-      <a href="#rsvp">RSVP</a>
+  <nav>
+    <div class="wrap">
+      <div class="brand">Lunar Con 2027</div>
+      <div class="links">
+        <a href="#news">News</a>
+        <a href="#stay">Stay</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#games">Games</a>
+        <a href="#suggest">Suggest</a>
+        <a href="#rsvp">RSVP</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<header class="hero">
-  <div class="wrap">
-    <img class="ram-icon" src="zodiac_ram_small.png" width="110" height="110" alt="Year of the Ram">
-    <div class="eyebrow">Year of the Ram · Chicago · Feb 11–14</div>
-    <h1>Four years in.<br>The table's set again.</h1>
-    <p class="sub">Thursday Feb 11 through Sunday Feb 14 - plus an optional early-bird session Wednesday the 10th. Location: Rob's place, South Loop. Reply to the email thread or use the form below to lock in your seat.</p>
-    <div class="cta-row">
-      <a href="#rsvp" class="btn btn-primary">RSVP</a>
-      <a href="#schedule" class="btn btn-ghost">See the schedule</a>
+  <header class="hero">
+    <div class="wrap">
+      <img class="ram-icon" src="zodiac_ram_small.png" width="110" height="110" alt="Year of the Ram">
+      <div class="eyebrow">Year of the Ram · Chicago · Feb 11–14</div>
+      <h1>Four years in.<br>The table's set again.</h1>
+      <p class="sub">Thursday Feb 11 through Sunday Feb 14 - plus an optional early-bird session Wednesday the 10th.
+        Location: Rob's place, South Loop. Reply to the email thread or use the form below to lock in your seat.</p>
+      <div class="cta-row">
+        <a href="#rsvp" class="btn btn-primary">RSVP</a>
+        <a href="#schedule" class="btn btn-ghost">See the schedule</a>
+      </div>
+      <div id="weather-chip" class="weather-chip">Chicago right now: loading…</div>
     </div>
-    <div id="weather-chip" class="weather-chip">Chicago right now: loading…</div>
-  </div>
-</header>
+  </header>
 
-<section id="news" class="alt">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Fresh off the table</div>
-      <h2>Current News!</h2>
-      <p>Updates land here instead of your inbox. Check back whenever.</p>
-    </div>
-    <div class="news-feed">
-      <article class="news-post">
-        <div class="news-date">Oct 25, 2026</div>
+  <section id="news" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Fresh off the table</div>
+        <h2>Current News!</h2>
+        <p>Updates land here instead of your inbox. Check back whenever.</p>
+      </div>
+      <div class="news-feed">
+        <article class="news-post">
+          <div class="news-date">Oct 25, 2026</div>
 
-        <h3>The list is in!</h3>
-        <p>Here's where things stand for who's pulling up a chair this year. If you're still on the fence, no pressure, but the sooner we've got a real number, the easier it is to plan table space (and figure out how many copies of things like Brass we actually need). Family's always welcome to show up whenever the spirit moves you. This is just so nobody's standing around waiting for a seat.</p>
-        <div class="rsvp-lists">
-          <div class="rsvp-list">
-            <div class="rsvp-list-label">Confirmed</div>
-            <ul>
-              <li>Jennifer White</li>
-              <li>Jonathan Cojuangco + Family</li>
-              <li>Camille Roubik +1</li>
-              <li>Jason Robinson</li>
-              <li>Caitlin Hanschmann</li>
-              <li>Jeff Hanschmann</li>
-              <li>Donnie Dupaya + Family</li>
-              <li>Donovan Dikitanan +1</li>
-              <li>Nicole Cojuangco</li>
-              <li>Rachele Robinson</li>
-              <li>Robert "Bob" Cruz</li>
-            </ul>
+          <h3>The list is in!</h3>
+          <p>Here's where things stand for who's pulling up a chair this year. If you're still on the fence, no
+            pressure, but the sooner we've got a real number, the easier it is to plan table space (and figure out how
+            many copies of things like Brass we actually need). Family's always welcome to show up whenever the spirit
+            moves you. This is just so nobody's standing around waiting for a seat.</p>
+          <div class="rsvp-lists">
+            <div class="rsvp-list">
+              <div class="rsvp-list-label">Confirmed</div>
+              <ul>
+                <li>Jennifer White</li>
+                <li>Jonathan Cojuangco + Family</li>
+                <li>Camille Roubik +1</li>
+                <li>Jason Robinson</li>
+                <li>Caitlin Hanschmann</li>
+                <li>Jeff Hanschmann</li>
+                <li>Donnie Dupaya + Family</li>
+                <li>Donovan Dikitanan +1</li>
+                <li>Nicole Cojuangco</li>
+                <li>Rachele Robinson</li>
+                <li>Robert "Bob" Cruz</li>
+                <li>Sam Mezzina</li>
+                <li>Metallo Family</li>
+                <li>Robbie Lopez</li>
+                <li>Michael Robinson</li>
+              </ul>
+            </div>
+            <div class="rsvp-list">
+              <div class="rsvp-list-label">Tentative</div>
+              <ul>
+                <li>Ai-Ai Cojuangco</li>
+
+              </ul>
+            </div>
           </div>
-          <div class="rsvp-list">
-            <div class="rsvp-list-label">Tentative</div>
-            <ul>
-              <li>Ai-Ai Cojuangco</li>
-              <li>DJ Dikitanan + Family</li>
-              <li>Sam Mezzina</li>
-            </ul>
-          </div>
+
+          <h3>Bringing the Gang</h3>
+          <p>Lunar Con's growing a little this year. Got a friend or two who'd fit right in for a weekend of games and
+            chaos? Let Jeff or Mike know via text or email so we can keep a solid head count. Don't have anyone in mind?
+            No worries, just let us know and we'll see if another family wants the extra spot.</p>
+
+          <h3>Chip In (Totally Optional, for Now)</h3>
+          <p>Keeping a house full of us happy, caffeinated, and moving for four days isn't free. If you're able, we're
+            asking for a voluntary contribution of $20-40 toward a shared pool covering staples and a possible rideshare
+            voucher program, so nobody's stressing about rides to and from the venue. A QR code to make chipping in
+            quick and easy is on its way.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="stay">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Where to stay</div>
+        <h2>Host Hotel</h2>
+        <p>A room block is reserved for LC27 if you'd rather not crash on the floor.</p>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-name">SpringHill Suites Chicago Chinatown</div>
+        <div class="hotel-meta">2.5 miles from Rob's place</div>
+        <ul class="hotel-details">
+          <li><strong>Rate:</strong> $160/night - good for any number of nights within the block</li>
+          <li><strong>Block dates:</strong> Wed, Feb 10 - Sun, Feb 14</li>
+          <li><strong>Book by:</strong> <span class="deadline">Jan 10, 2027</span> - rooms released after this date</li>
+        </ul>
+        <a href="https://app.marriott.com/resview2?id=1790197024424&key=GRP&app=resvlink" class="btn btn-primary"
+          target="_blank" rel="noopener">Book Your Group Rate for LC27</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Dates locked</div>
+        <h2>Schedule</h2>
+        <p>Feb 11–14 is official. Activities below are still filling in - fan favorites tend to fight their way back
+          onto the table regardless of what's written here.</p>
+      </div>
+      <div class="schedule-grid">
+        <div class="day-card early-bird">
+          <div class="day-label">Early Bird <span class="day-badge">Exclusive · optional</span></div>
+          <div class="day-note">Wed, Feb 10</div>
+          <ul>
+            <li class="tbd">Late afternoon/evening - a game or two</li>
+          </ul>
         </div>
+        <div class="day-card">
+          <div class="day-label">Day 1</div>
+          <div class="day-note">Thu, Feb 11 · Arrivals</div>
+          <ul>
+            <li>
+              <div class="day-subhead">LC27 Opener</div>
+              🕰️ Blood on the Clocktower - Time: TBD
+            </li>
+            <li class="tbd">Schedule TBD</li>
+          </ul>
+        </div>
+        <div class="day-card">
+          <div class="day-label">Day 2</div>
+          <div class="day-note">Fri, Feb 12 · Full day</div>
+          <ul>
+            <li class="tbd">Early game slot</li>
+            <li class="tbd">Main event TBD</li>
+          </ul>
+        </div>
+        <div class="day-card">
+          <div class="day-label">Day 3</div>
+          <div class="day-note">Sat, Feb 13 · Full day</div>
+          <ul>
+            <li class="tbd">Early game slot</li>
+            <li class="tbd">Schedule TBD</li>
+          </ul>
+        </div>
+        <div class="day-card">
+          <div class="day-label">Final Day</div>
+          <div class="day-note">Sun, Feb 14 · Late night OK - Mon's a holiday</div>
+          <ul>
+            <li>🏈 Super Bowl LXI - 5:30 CST - with a twist!</li>
+            <li class="tbd">Schedule TBD</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <h3>Bringing the Gang</h3>
-        <p>Lunar Con's growing a little this year. Got a friend or two who'd fit right in for a weekend of games and chaos? Let Jeff or Mike know via text or email so we can keep a solid head count. Don't have anyone in mind? No worries, just let us know and we'll see if another family wants the extra spot.</p>
+  <section id="games" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Bring what you've got</div>
+        <h2>Game Library</h2>
+        <p>What's already spoken for. Add yours with the form below. Click a game for more info.*</p>
+        <div class="meeple-row" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="26" height="26">
+            <circle cx="50" cy="20" r="14" fill="var(--ember)" />
+            <path d="M30,35 L70,35 L80,80 L65,80 L65,60 L58,60 L58,95 L42,95 L42,60 L35,60 L35,80 L20,80 Z"
+              fill="var(--ember)" />
+          </svg>
+          <svg viewBox="0 0 100 100" width="26" height="26">
+            <circle cx="50" cy="20" r="14" fill="var(--gold)" />
+            <path d="M30,35 L70,35 L80,80 L65,80 L65,60 L58,60 L58,95 L42,95 L42,60 L35,60 L35,80 L20,80 Z"
+              fill="var(--gold)" />
+          </svg>
+          <svg viewBox="0 0 100 100" width="26" height="26">
+            <circle cx="50" cy="20" r="14" fill="var(--night-2)" />
+            <path d="M30,35 L70,35 L80,80 L65,80 L65,60 L58,60 L58,95 L42,95 L42,60 L35,60 L35,80 L20,80 Z"
+              fill="var(--night-2)" />
+          </svg>
+        </div>
+      </div>
+      <div class="game-grid">
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/266192/wingspan" target="_blank"
+          rel="noopener">🐦 Wingspan</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/359871/arcs" target="_blank" rel="noopener">🚀
+          ARCS</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/286096/tapestry" target="_blank"
+          rel="noopener">🧵 Tapestry</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/2093/mahjong" target="_blank" rel="noopener">🀄
+          Mahjong</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/452264/brass-pittsburgh" target="_blank"
+          rel="noopener">🏭 Brass Pittsburgh</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/371330/luthier" target="_blank" rel="noopener">🎻
+          Luthier</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/332686/john-company-second-edition"
+          target="_blank" rel="noopener">🚢 John Company</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/399941/river-of-gold" target="_blank"
+          rel="noopener">💰 River of Gold</a>
+        <a class="game-chip"
+          href="https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence"
+          target="_blank" rel="noopener">📡 SETI</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/358661/andromedas-edge" target="_blank"
+          rel="noopener">🌌 Andromeda's Edge</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/224517/brass-birmingham" target="_blank"
+          rel="noopener">⚙️ Brass Birmingham</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/199792/everdell" target="_blank"
+          rel="noopener">🐿️ Everdell</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/400366/wondrous-creatures" target="_blank"
+          rel="noopener">🐉 Wondrous Creatures</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/199561/sagrada" target="_blank" rel="noopener">🪟
+          Sagrada</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/460712/mountain-goats-legacy" target="_blank"
+          rel="noopener">🐐 Mountain Goats: Legacy</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/426513/emberleaf" target="_blank"
+          rel="noopener">🦔 Emberleaf</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/164928/orleans" target="_blank" rel="noopener">🏰
+          Orléans</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/391137/galactic-cruise" target="_blank"
+          rel="noopener">🛸 Galactic Cruise</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/371942/the-white-castle" target="_blank"
+          rel="noopener">🏯 The White Castle</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/420033/vantage" target="_blank"
+          rel="noopener">🗺️ Vantage</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/393333/galileo-galilei" target="_blank"
+          rel="noopener">🔭 Galileo Galilei</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/240980/blood-on-the-clocktower" target="_blank"
+          rel="noopener">🕰️ Blood on the Clocktower</a>
+        <a class="game-chip" href="https://boardgamegeek.com/boardgame/375459/speakeasy" target="_blank"
+          rel="noopener">🥃 Speakeasy</a>
+      </div>
+      <p class="game-note">* Links open the game's page on BoardGameGeek in a new tab.</p>
+    </div>
+  </section>
 
-        <h3>Chip In (Totally Optional, for Now)</h3>
-        <p>Keeping a house full of us happy, caffeinated, and moving for four days isn't free. If you're able, we're asking for a voluntary contribution of $20-40 toward a shared pool covering staples and a possible rideshare voucher program, so nobody's stressing about rides to and from the venue. A QR code to make chipping in quick and easy is on its way.</p>
-      </article>
+  <section id="suggest">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Have a pick</div>
+        <h2>Suggest a game or activity</h2>
+        <p>Goes straight to the organizers - no reply-all required.</p>
+      </div>
+      <form name="game-suggestions" id="suggest-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="game-suggestions">
+        <p class="hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="field">
+          <label for="s-name">Your name</label>
+          <input id="s-name" name="name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="s-game">Game or activity</label>
+          <input id="s-game" name="suggestion" type="text" required>
+        </div>
+        <div class="field">
+          <label for="s-note">Anything else? (player count, how long it takes, why it's a must)</label>
+          <textarea id="s-note" name="note"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send suggestion</button>
+      </form>
+      <div id="suggest-success" class="form-success" hidden>
+        <p class="display">Suggestion sent.</p>
+        <p>Thanks - it's on the list for consideration.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="stay">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Where to stay</div>
-      <h2>Host Hotel</h2>
-      <p>A room block is reserved for LC27 if you'd rather not crash on the floor.</p>
-    </div>
-    <div class="hotel-card">
-      <div class="hotel-name">SpringHill Suites Chicago Chinatown</div>
-      <div class="hotel-meta">2.5 miles from Rob's place</div>
-      <ul class="hotel-details">
-        <li><strong>Rate:</strong> $160/night - good for any number of nights within the block</li>
-        <li><strong>Block dates:</strong> Wed, Feb 10 - Sun, Feb 14</li>
-        <li><strong>Book by:</strong> <span class="deadline">Jan 10, 2027</span> - rooms released after this date</li>
-      </ul>
-      <a href="https://app.marriott.com/resview2?id=1790197024424&key=GRP&app=resvlink" class="btn btn-primary" target="_blank" rel="noopener">Book Your Group Rate for LC27</a>
-    </div>
-  </div>
-</section>
-
-<section id="schedule">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Dates locked</div>
-      <h2>Schedule</h2>
-      <p>Feb 11–14 is official. Activities below are still filling in - fan favorites tend to fight their way back onto the table regardless of what's written here.</p>
-    </div>
-    <div class="schedule-grid">
-      <div class="day-card early-bird">
-        <div class="day-label">Early Bird <span class="day-badge">Exclusive · optional</span></div>
-        <div class="day-note">Wed, Feb 10</div>
-        <ul>
-          <li class="tbd">Late afternoon/evening - a game or two</li>
-        </ul>
+  <section id="rsvp" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Lock it in</div>
+        <h2>RSVP</h2>
+        <p>Feb 11–14 is official - let us know you're in.</p>
       </div>
-      <div class="day-card">
-        <div class="day-label">Day 1</div>
-        <div class="day-note">Thu, Feb 11 · Arrivals</div>
-        <ul>
-          <li>
-            <div class="day-subhead">LC27 Opener</div>
-            🕰️ Blood on the Clocktower - Time: TBD
-          </li>
-          <li class="tbd">Schedule TBD</li>
-        </ul>
-      </div>
-      <div class="day-card">
-        <div class="day-label">Day 2</div>
-        <div class="day-note">Fri, Feb 12 · Full day</div>
-        <ul>
-          <li class="tbd">Early game slot</li>
-          <li class="tbd">Main event TBD</li>
-        </ul>
-      </div>
-      <div class="day-card">
-        <div class="day-label">Day 3</div>
-        <div class="day-note">Sat, Feb 13 · Full day</div>
-        <ul>
-          <li class="tbd">Early game slot</li>
-          <li class="tbd">Schedule TBD</li>
-        </ul>
-      </div>
-      <div class="day-card">
-        <div class="day-label">Final Day</div>
-        <div class="day-note">Sun, Feb 14 · Late night OK - Mon's a holiday</div>
-        <ul>
-          <li>🏈 Super Bowl LXI - 5:30 CST - with a twist!</li>
-          <li class="tbd">Schedule TBD</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="games" class="alt">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Bring what you've got</div>
-      <h2>Game Library</h2>
-      <p>What's already spoken for. Add yours with the form below. Click a game for more info.*</p>
-      <div class="meeple-row" aria-hidden="true">
-        <svg viewBox="0 0 100 100" width="26" height="26"><circle cx="50" cy="20" r="14" fill="var(--ember)"/><path d="M30,35 L70,35 L80,80 L65,80 L65,60 L58,60 L58,95 L42,95 L42,60 L35,60 L35,80 L20,80 Z" fill="var(--ember)"/></svg>
-        <svg viewBox="0 0 100 100" width="26" height="26"><circle cx="50" cy="20" r="14" fill="var(--gold)"/><path d="M30,35 L70,35 L80,80 L65,80 L65,60 L58,60 L58,95 L42,95 L42,60 L35,60 L35,80 L20,80 Z" fill="var(--gold)"/></svg>
-        <svg viewBox="0 0 100 100" width="26" height="26"><circle cx="50" cy="20" r="14" fill="var(--night-2)"/><path d="M30,35 L70,35 L80,80 L65,80 L65,60 L58,60 L58,95 L42,95 L42,60 L35,60 L35,80 L20,80 Z" fill="var(--night-2)"/></svg>
-      </div>
-    </div>
-    <div class="game-grid">
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/266192/wingspan" target="_blank" rel="noopener">🐦 Wingspan</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/359871/arcs" target="_blank" rel="noopener">🚀 ARCS</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/286096/tapestry" target="_blank" rel="noopener">🧵 Tapestry</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/2093/mahjong" target="_blank" rel="noopener">🀄 Mahjong</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/452264/brass-pittsburgh" target="_blank" rel="noopener">🏭 Brass Pittsburgh</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/371330/luthier" target="_blank" rel="noopener">🎻 Luthier</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/332686/john-company-second-edition" target="_blank" rel="noopener">🚢 John Company</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/399941/river-of-gold" target="_blank" rel="noopener">💰 River of Gold</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence" target="_blank" rel="noopener">📡 SETI</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/358661/andromedas-edge" target="_blank" rel="noopener">🌌 Andromeda's Edge</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/224517/brass-birmingham" target="_blank" rel="noopener">⚙️ Brass Birmingham</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/199792/everdell" target="_blank" rel="noopener">🐿️ Everdell</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/400366/wondrous-creatures" target="_blank" rel="noopener">🐉 Wondrous Creatures</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/199561/sagrada" target="_blank" rel="noopener">🪟 Sagrada</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/460712/mountain-goats-legacy" target="_blank" rel="noopener">🐐 Mountain Goats: Legacy</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/426513/emberleaf" target="_blank" rel="noopener">🦔 Emberleaf</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/164928/orleans" target="_blank" rel="noopener">🏰 Orléans</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/391137/galactic-cruise" target="_blank" rel="noopener">🛸 Galactic Cruise</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/371942/the-white-castle" target="_blank" rel="noopener">🏯 The White Castle</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/420033/vantage" target="_blank" rel="noopener">🗺️ Vantage</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/393333/galileo-galilei" target="_blank" rel="noopener">🔭 Galileo Galilei</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/240980/blood-on-the-clocktower" target="_blank" rel="noopener">🕰️ Blood on the Clocktower</a>
-      <a class="game-chip" href="https://boardgamegeek.com/boardgame/375459/speakeasy" target="_blank" rel="noopener">🥃 Speakeasy</a>
-    </div>
-    <p class="game-note">* Links open the game's page on BoardGameGeek in a new tab.</p>
-  </div>
-</section>
-
-<section id="suggest">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Have a pick</div>
-      <h2>Suggest a game or activity</h2>
-      <p>Goes straight to the organizers - no reply-all required.</p>
-    </div>
-    <form name="game-suggestions" id="suggest-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="game-suggestions">
-      <p class="hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
-      <div class="field">
-        <label for="s-name">Your name</label>
-        <input id="s-name" name="name" type="text" required>
-      </div>
-      <div class="field">
-        <label for="s-game">Game or activity</label>
-        <input id="s-game" name="suggestion" type="text" required>
-      </div>
-      <div class="field">
-        <label for="s-note">Anything else? (player count, how long it takes, why it's a must)</label>
-        <textarea id="s-note" name="note"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Send suggestion</button>
-    </form>
-    <div id="suggest-success" class="form-success" hidden>
-      <p class="display">Suggestion sent.</p>
-      <p>Thanks - it's on the list for consideration.</p>
-    </div>
-  </div>
-</section>
-
-<section id="rsvp" class="alt">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Lock it in</div>
-      <h2>RSVP</h2>
-      <p>Feb 11–14 is official - let us know you're in.</p>
-    </div>
-    <form name="rsvp" id="rsvp-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="rsvp">
-      <p class="hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
-      <div class="field">
-        <label for="r-name">Your name</label>
-        <input id="r-name" name="name" type="text" required>
-      </div>
-      <div class="field">
-        <label for="r-plus">Anyone joining with you?</label>
-        <input id="r-plus" name="plus_ones" type="text" placeholder="Names, or leave blank">
-      </div>
-      <div class="field">
-        <fieldset>
-          <label>Are you in?</label>
+      <form name="rsvp" id="rsvp-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="rsvp">
+        <p class="hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="field">
+          <label for="r-name">Your name</label>
+          <input id="r-name" name="name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="r-plus">Anyone joining with you?</label>
+          <input id="r-plus" name="plus_ones" type="text" placeholder="Names, or leave blank">
+        </div>
+        <div class="field">
+          <fieldset>
+            <label>Are you in?</label>
+            <div class="radio-row">
+              <label><input type="radio" name="attending" value="yes" required> Yes</label>
+              <label><input type="radio" name="attending" value="tentative"> Tentative</label>
+              <label><input type="radio" name="attending" value="no"> Can't make it</label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="field">
           <div class="radio-row">
-            <label><input type="radio" name="attending" value="yes" required> Yes</label>
-            <label><input type="radio" name="attending" value="tentative"> Tentative</label>
-            <label><input type="radio" name="attending" value="no"> Can't make it</label>
+            <label><input type="checkbox" name="early_bird" value="yes"> Also joining the Exclusive Early Bird session
+              (Wed, Feb 10)</label>
           </div>
-        </fieldset>
-      </div>
-      <div class="field">
-        <div class="radio-row">
-          <label><input type="checkbox" name="early_bird" value="yes"> Also joining the Exclusive Early Bird session (Wed, Feb 10)</label>
         </div>
+        <div class="field">
+          <label for="r-notes">Notes or requests</label>
+          <input id="r-notes" name="notes" type="text" placeholder="Optional">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit RSVP</button>
+      </form>
+      <div id="rsvp-success" class="form-success" hidden>
+        <p class="display">Your seat has been reserved.</p>
+        <p>See you Feb 11–14 (plus Wednesday the 10th if you're in for the early bird session). Reply to the email
+          thread if anything changes.</p>
       </div>
-      <div class="field">
-        <label for="r-notes">Notes or requests</label>
-        <input id="r-notes" name="notes" type="text" placeholder="Optional">
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <div class="display" style="color:#F7F5F0; font-size:18px;">Lunar Con 2027</div>
+        <p style="margin-top:8px;">South Loop, Chicago</p>
       </div>
-      <button type="submit" class="btn btn-primary">Submit RSVP</button>
-    </form>
-    <div id="rsvp-success" class="form-success" hidden>
-      <p class="display">Your seat has been reserved.</p>
-      <p>See you Feb 11–14 (plus Wednesday the 10th if you're in for the early bird session). Reply to the email thread if anything changes.</p>
+      <div>
+        <p>Questions? Email <a href="mailto:robinson.michael04@gmail.com">Mike</a> or <a
+            href="mailto:jphanschmann@gmail.com">Jeff</a>.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<footer>
-  <div class="wrap">
-    <div>
-      <div class="display" style="color:#F7F5F0; font-size:18px;">Lunar Con 2027</div>
-      <p style="margin-top:8px;">South Loop, Chicago</p>
-    </div>
-    <div>
-      <p>Questions? Email <a href="mailto:robinson.michael04@gmail.com">Mike</a> or <a href="mailto:jphanschmann@gmail.com">Jeff</a>.</p>
-    </div>
-  </div>
-</footer>
-
-<script>
-  function handleNetlifyForm(formId, successId) {
-    var form = document.getElementById(formId);
-    var success = document.getElementById(successId);
-    if (!form || !success) return;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var body = new URLSearchParams(new FormData(form)).toString();
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body
-      })
-        .then(function (res) {
-          if (!res.ok) throw new Error('Form submission failed');
-          form.hidden = true;
-          success.hidden = false;
+  <script>
+    function handleNetlifyForm(formId, successId) {
+      var form = document.getElementById(formId);
+      var success = document.getElementById(successId);
+      if (!form || !success) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var body = new URLSearchParams(new FormData(form)).toString();
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body
         })
-        .catch(function () {
-          alert("Something went wrong sending that - please try again, or email robinson.michael04@gmail.com directly.");
-        });
-    });
-  }
+          .then(function (res) {
+            if (!res.ok) throw new Error('Form submission failed');
+            form.hidden = true;
+            success.hidden = false;
+          })
+          .catch(function () {
+            alert("Something went wrong sending that - please try again, or email robinson.michael04@gmail.com directly.");
+          });
+      });
+    }
 
-  handleNetlifyForm('rsvp-form', 'rsvp-success');
-  handleNetlifyForm('suggest-form', 'suggest-success');
+    handleNetlifyForm('rsvp-form', 'rsvp-success');
+    handleNetlifyForm('suggest-form', 'suggest-success');
 
-  var WEATHER_CODES = {
-    0: 'Clear', 1: 'Mostly clear', 2: 'Partly cloudy', 3: 'Overcast',
-    45: 'Foggy', 48: 'Foggy',
-    51: 'Light drizzle', 53: 'Drizzle', 55: 'Heavy drizzle',
-    61: 'Light rain', 63: 'Rain', 65: 'Heavy rain',
-    71: 'Light snow', 73: 'Snow', 75: 'Heavy snow', 77: 'Snow grains',
-    80: 'Rain showers', 81: 'Rain showers', 82: 'Heavy rain showers',
-    85: 'Snow showers', 86: 'Snow showers',
-    95: 'Thunderstorms', 96: 'Thunderstorms', 99: 'Thunderstorms'
-  };
+    var WEATHER_CODES = {
+      0: 'Clear', 1: 'Mostly clear', 2: 'Partly cloudy', 3: 'Overcast',
+      45: 'Foggy', 48: 'Foggy',
+      51: 'Light drizzle', 53: 'Drizzle', 55: 'Heavy drizzle',
+      61: 'Light rain', 63: 'Rain', 65: 'Heavy rain',
+      71: 'Light snow', 73: 'Snow', 75: 'Heavy snow', 77: 'Snow grains',
+      80: 'Rain showers', 81: 'Rain showers', 82: 'Heavy rain showers',
+      85: 'Snow showers', 86: 'Snow showers',
+      95: 'Thunderstorms', 96: 'Thunderstorms', 99: 'Thunderstorms'
+    };
 
-  fetch('https://api.open-meteo.com/v1/forecast?latitude=41.8781&longitude=-87.6298&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America%2FChicago')
-    .then(function (res) { return res.json(); })
-    .then(function (data) {
-      var chip = document.getElementById('weather-chip');
-      var current = data.current;
-      var temp = Math.round(current.temperature_2m);
-      var condition = WEATHER_CODES[current.weather_code] || '';
-      chip.textContent = 'Chicago right now: ' + temp + '°F' + (condition ? ', ' + condition : '');
-    })
-    .catch(function () {
-      var chip = document.getElementById('weather-chip');
-      if (chip) chip.hidden = true;
-    });
-</script>
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=41.8781&longitude=-87.6298&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America%2FChicago')
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        var chip = document.getElementById('weather-chip');
+        var current = data.current;
+        var temp = Math.round(current.temperature_2m);
+        var condition = WEATHER_CODES[current.weather_code] || '';
+        chip.textContent = 'Chicago right now: ' + temp + '°F' + (condition ? ', ' + condition : '');
+      })
+      .catch(function () {
+        var chip = document.getElementById('weather-chip');
+        if (chip) chip.hidden = true;
+      });
+  </script>
 
 </body>
+
 </html>
