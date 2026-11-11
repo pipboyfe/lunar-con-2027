@@ -226,6 +226,29 @@
       color: var(--ink);
     }
 
+    .venmo-box {
+      margin-top: 16px;
+      display: inline-block;
+    }
+
+    .venmo-qr {
+      display: block;
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+    }
+
+    .venmo-caption {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--mist);
+      text-align: center;
+    }
+
     .rsvp-lists {
       display: flex;
       gap: 32px;
@@ -615,8 +638,11 @@
           <h3>Chip In (Totally Optional, for Now)</h3>
           <p>Keeping a house full of us happy, caffeinated, and moving for four days isn't free. If you're able, we're
             asking for a voluntary contribution of $20-40 toward a shared pool covering staples and a possible rideshare
-            voucher program, so nobody's stressing about rides to and from the venue. A QR code to make chipping in
-            quick and easy is on its way.</p>
+            voucher program, so nobody's stressing about rides to and from the venue.</p>
+          <div class="venmo-box">
+            <img class="venmo-qr" src="venmo_qr.jpg" alt="Venmo QR code">
+            <div class="venmo-caption">Scan to Venmo</div>
+          </div>
         </article>
       </div>
     </div>
